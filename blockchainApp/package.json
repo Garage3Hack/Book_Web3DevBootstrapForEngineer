@@ -1,0 +1,23 @@
+{
+  "name": "blockchainapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "cp -rp ./artifacts/contracts/. ./frontend/abi/ && rm -rf ./frontend/abi/*/*.dbg.json && npx typechain --target=ethers-v6 --out-dir ./frontend/types ./frontend/abi/*/*.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.17.1"
+  },
+  "dependencies": {
+    "@mantine/core": "^6.0.18",
+    "@mantine/hooks": "^6.0.18",
+    "@mantine/next": "^6.0.18",
+    "@openzeppelin/contracts": "^4.9.3"
+  }
+}
