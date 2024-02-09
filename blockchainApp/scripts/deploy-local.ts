@@ -23,6 +23,35 @@ async function main() {
   const seaport = await ethers.deployContract("Seaport", [conduitControllerAddress]);
   await seaport.waitForDeployment();
   console.log(`Seaport deployed to: ${seaport.target}`);
+
+  const [owner] = await ethers.getSigners();
+
+  // TimelockControllerをデプロイする
+  const myTimelockController = await ethers.deployContract("MyTimelockController", [60 * 2 /* 2 minutes */, [owner.getAddress()], [owner.getAddress()], owner.getAddress()]);
+  await myTimelockController.waitForDeployment();
+
+  console.log(`TimelockController deployed to: ${myTimelockController.target}`);
+
+  // MyGovernor Contractをデプロイする
+  const myGovernor = await ethers.deployContract("MyGovernor", [myERC20.target, myTimelockController.target]);
+  await myGovernor.waitForDeployment();
+
+  console.log(`MyGovernor deployed to: ${myGovernor.target}`);
+
+  // 実行Roleの割り当て, proposerRoleがないとQUEUE実行できない、executorRoleがないとExecute実行できない
+  const proposerRole = await myTimelockController.PROPOSER_ROLE();
+  const executorRole = await myTimelockController.EXECUTOR_ROLE();
+  const adminRole = await myTimelockController.TIMELOCK_ADMIN_ROLE();
+
+  await myTimelockController.grantRole(proposerRole, myGovernor.target);
+  await myTimelockController.grantRole(executorRole, myGovernor.target);
+
+  console.log(`MyGovernor granted to PROPOSER_ROLE and EXECUTER_ROLE`);
+
+  await myERC20.grantMinterRole(myTimelockController.target);
+
+  console.log(`MyTimelockController granted to MINTER_ROLE`);
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
