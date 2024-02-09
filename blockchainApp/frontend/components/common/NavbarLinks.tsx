@@ -4,7 +4,8 @@ import {
 import {
   IconHome2,
   IconCards,
-  IconShoppingCartBolt
+  IconShoppingCartBolt,
+  IconBulb
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { useState } from 'react';
@@ -29,6 +30,12 @@ export const NavbarLinks = () => {
       color: "green",
       label: 'Buy NFT',
       path: "/order"
+    },
+    {
+      icon: <IconBulb size={20} />,
+      color: "green",
+      label: 'My Governor',
+      path: "/mygovernor"
     }
   ];
 

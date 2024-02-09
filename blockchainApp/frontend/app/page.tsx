@@ -1,10 +1,10 @@
 "use client"
 import { ethers } from "ethers";
 import { useEffect, useState } from 'react';
-import artifact from "../abi/MyToken.sol/MyToken.json";
+import artifact from "../abi/MyERC20.sol/MyERC20.json";
 
-// デプロイしたMyTokenのアドレス
-const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+// デプロイしたMyERC20のアドレス
+const contractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 export default function Home() {
   // Metamask等が提供するEthereumプロバイダーを格納する変数
