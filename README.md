@@ -44,7 +44,7 @@ git reset --hard HEAD
 npm install
 ```
 
-## 事前準備
+# 事前準備
 
 ## リスト3. インデントの設定
 ```json:setting.json
