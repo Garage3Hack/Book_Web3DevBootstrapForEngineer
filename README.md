@@ -1,6 +1,6 @@
 # ブロックチェーンサンプル（5章）　 マーケットプレイスコントラクトの開発（5.5まで）
 
-## リスト２8. Seaportのインストール
+## リスト28. Seaportのインストール
 ```
 npm install git+https://github.com/ProjectOpenSea/seaport.git#1.5
 ```
