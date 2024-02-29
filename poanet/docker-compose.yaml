@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  # ノード1の設定
+  node1:
+    image: ethereum/client-go:v1.13.3
+    entrypoint: "/bin/sh"
+    tty: true
+    volumes:
+      - ./node1:/root
+    working_dir: /root
+    ports:
+      - 8545:8545
+    networks:
+      poanetwork:
+        ipv4_address: 172.20.0.10
+  # ノード2の設定
+  node2:
+    image: ethereum/client-go:v1.13.3
+    entrypoint: "/bin/sh"
+    tty: true
+    volumes:
+      - ./node2:/root
+    working_dir: /root
+    networks:
+      poanetwork:
+        ipv4_address: 172.20.0.11
+# ネットワークの設定
+networks:
+  poanetwork:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
