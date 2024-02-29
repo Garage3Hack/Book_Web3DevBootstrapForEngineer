@@ -1,9 +1,9 @@
 "use client"
 import { ethers } from "ethers";
 import { useEffect, useState } from 'react';
-import artifact from "../abi/MyToken.sol/MyToken.json";
+import artifact from "../abi/MyERC20.sol/MyERC20.json";
 
-// デプロイしたMyTokenのアドレス
+// デプロイしたMyERC20のアドレス
 const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 
 export default function Home() {
