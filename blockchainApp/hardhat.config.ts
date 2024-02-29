@@ -9,6 +9,10 @@ const config: HardhatUserConfig = {
       url: `${process.env.POANET_URL}`,
       accounts: [`0x${process.env.POANET_PRIVATE_KEY}`],
     },
+    sepolia: {
+      url: `${process.env.ALCHEMY_SEPOLIA_URL}`,
+      accounts: [`0x${process.env.SEPOLIA_PRIVATE_KEY}`],
+    }
   },
 };
 
